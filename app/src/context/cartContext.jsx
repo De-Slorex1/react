@@ -18,10 +18,19 @@ export function CartPrivider({children}) {
     }
 
     console.log(cart)
-    // const cartCount = cart.reduce((sum, item) => {sum + item.quantity})
+    
+    function handleIncrement(id) {
+        return setCart((currentItem) => currentItem.map(item => item.dish_id === id ? {...item, quantity: item.quantity + 1} : item))
+    }
+
+    function handleDecrement(id) {
+        return setCart((currentItem) => currentItem.map(item => item.dish_id === id ? {...item, quantity: item.quantity - 1} : item))
+    }
+
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
-    <CartContext.Provider value={{addToCart, cart}}>
+    <CartContext.Provider value={{addToCart, cart, cartCount, handleIncrement, handleDecrement}}>
         {children}
     </CartContext.Provider>
   )

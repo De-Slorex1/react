@@ -9,7 +9,7 @@ function Products() {
       <p className='text-center pb-10 text-gray-600'>Currated and well served nigeria and ghana jollof rice</p>
       <div className='flex flex-row flex-wrap gap-5'>
         {dishes.culinary_dishes.map(item => (
-          <ProductCard key={item.id} dish={item} />
+          <ProductCard key={item.dish_id} dish={item} />
         ))}
       </div>
     </div>

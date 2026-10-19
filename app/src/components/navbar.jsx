@@ -5,7 +5,7 @@ import './navbar.css'
 import { useCart } from '../context/cartContext';
 
 function Navbar() {
-  // const {cartCount} = useCart()
+  const {cartCount} = useCart()
 
   return (
     <nav className='w-full bg-amber-950 text-white'>
@@ -22,7 +22,10 @@ function Navbar() {
         </div>
 
         <div className='flex flex-row gap-5'>
-            <Link to='/cart'><ShoppingCart /></Link>
+            <Link to='/cart' className='relative'>
+              <ShoppingCart />
+              <div className=' absolute top-0 right-0 bg-amber-500 text-black w-4 h-5 rounded-full text-center font-bold'>{cartCount}</div>
+            </Link>
             <button>Sign in</button>
         </div>
       </div>
