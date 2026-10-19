@@ -1,11 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { ShoppingCart } from 'lucide-react';
 import './navbar.css'
+import { useCart } from '../context/cartContext';
 
 function Navbar() {
+  // const {cartCount} = useCart()
+
   return (
     <nav className='w-full bg-amber-950 text-white'>
-      <div className='w-full flex justify-between p-10'>
+      <div className='w-full flex justify-between p-8'>
         <div>
             Logo
         </div>
@@ -17,7 +21,8 @@ function Navbar() {
             <NavLink to='/contact' className='text-white'>Contact</NavLink>
         </div>
 
-        <div>
+        <div className='flex flex-row gap-5'>
+            <Link to='/cart'><ShoppingCart /></Link>
             <button>Sign in</button>
         </div>
       </div>

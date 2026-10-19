@@ -6,10 +6,12 @@ import Products from './pages/products/products'
 import Contact from './pages/contact/contact'
 import Navbar from './components/navbar'
 import ProductDetails from './pages/productDetails/productDetails'
+import Cart from './pages/cart/cart'
+import { useCart } from './context/cartContext'
 
 
 function App() {
-
+  
   return (
     <>
       <Navbar />
@@ -19,6 +21,7 @@ function App() {
         <Route path='/products' element={<Products />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/dish/:dish_id' element={<ProductDetails />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </>
   )

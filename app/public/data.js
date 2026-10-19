@@ -19,7 +19,7 @@ export const dishes = {
         fat_g: 13
       },
       images: {
-        full_size: "./samosa.jgp",
+        full_size: "https://i.postimg.cc/D0gw2nPY/emanuel-ekstrom-fl-EUTTw-Gl-JQ-unsplash.jpg",
         thumbnail: "https://images.example.com/dishes/thumbs/margherita-pizza_thumb.jpg"
       }
     },

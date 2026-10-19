@@ -1,22 +1,39 @@
 import { useContext, createContext, useState } from "react";
 
-// const CartContext = createContext(null)
+const CartContext = createContext(null)
 
-function CartContext() {
-    const [cartItems, setCartItems] = useState([, 2, 3, 4, 5, 6, 7])
-    console.log(cartItems)
+export function CartPrivider({children}) {
+    const [cart, setCart] = useState([])
 
-    function addToCart() {
-        setCartItems((cartItems) => {
-            cartItems.find(item => item === 1)
+    function addToCart(dish) {
+        setCart((currentItems) => {
+            const existingItem = currentItems.find((item) => item.dish_id === dish.dish_id)
+
+            if(existingItem) {
+                return currentItems.map((item) => item.dish_id === dish.dish_id ? {...dish, quantity: item.quantity + 1} : item)
+            } 
         })
+
+        return setCart([...cart, {...dish, quantity: 1}])
     }
+
+    console.log(cart)
+    // const cartCount = cart.reduce((sum, item) => {sum + item.quantity})
+
   return (
-    <div>
-        {cartItems}
-        <button onClick={addToCart}>Add to Cart</button>
-    </div>
+    <CartContext.Provider value={{addToCart, cart}}>
+        {children}
+    </CartContext.Provider>
   )
 }
 
-export default CartContext;
+
+export function useCart() {
+    const context = useContext(CartContext)
+
+    if(!context){
+        return <p>Context not found</p>
+    }
+
+    return context
+}

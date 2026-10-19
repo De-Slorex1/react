@@ -3,8 +3,12 @@ import { dishes } from '../../../public/data';
 import { useParams } from 'react-router-dom';
 
 function ProductDetails() {
-    const dish_id = useParams()
+    const {dish_id} = useParams()
     const dish = dishes.culinary_dishes.find(item => item.dish_id === dish_id)
+
+    if(!dish) {
+      return <p>Dish not found</p>
+    }
   return (
     <div>
       <img className='w-[400px] h-[400px] my-5' src={dish.images.full_size} alt={dish.name} />
