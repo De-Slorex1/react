@@ -2,14 +2,14 @@ import React from 'react'
 import { useCart } from '../../context/cartContext';
 
 function Cart() {
-  const {cart, handleIncrement, handleDecrement} = useCart()
+  const {cart, handleIncrement, handleDecrement, total} = useCart()
 
   if(cart.length === 0) {
     return <h3>Your cart is empty!!!</h3>
   }
 
   return (
-    <div className='flex flex-col gap-7 justify-center items-center'>
+    <div className='flex mx-8 flex-col gap-7 justify-center items-center'>
       <h3 className='my-5 text-3xl font-bold'>Your Cart</h3>
       {cart.map(item => (
         <div className='flex justify-between items-center w-[90%] h-[100px] px-7 border border-amber-900 rounded-2xl' key={item.dish_id}>
@@ -28,6 +28,10 @@ function Cart() {
           </div>
         </div>
       ))}
+      <div className='flex w-full justify-end mr-44'>
+        <h2 className='font-black text-2xl'>Subtotal - </h2>
+        <h2 className='font-black text-2xl'> {total}</h2>
+      </div>
     </div>
   )
 }
